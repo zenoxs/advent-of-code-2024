@@ -1,6 +1,4 @@
 import * as path from "jsr:@std/path"
-import { isMainThread, parentPort, Worker, workerData } from "node:worker_threads"
-import { splitIntoChunks } from "../helpers.ts"
 import { computeGuardPath, displayMapState, getWallsAndGuardPositionDirection } from "./common.ts"
 
 const inputPath = path.join(import.meta.dirname!, "input.txt")
@@ -13,25 +11,26 @@ const [walls, guardPosition, guardDirection] = getWallsAndGuardPositionDirection
 
 displayMapState(walls, guardPosition, guardDirection, [])
 
-// Single Thread
-let totalOfLoops = 0
-walls.forEach((row, y) => {
-    row.forEach((_, x) => {
-        if (guardPosition[0] === y && guardPosition[1] === x) {
-            // don't block the initial pos
-            return
-        }
+// Find the initial path of the guard
+const [traversedCells] = computeGuardPath(walls, guardPosition, guardDirection)
 
-        const testedWalls = JSON.parse(JSON.stringify(walls)) // deep clone
-        testedWalls[y][x] = true
+// We are going to try to block every cell of the guard path
+const totalOfLoops = traversedCells.reduce<number>((acc, [y, x]) => {
+    if (guardPosition[0] === y && guardPosition[1] === x) {
+        // don't block the initial pos
+        return acc
+    }
 
-        const [, isLoop] = computeGuardPath(testedWalls, guardPosition, guardDirection)
+    const testedWalls = JSON.parse(JSON.stringify(walls)) // deep clone
+    testedWalls[y][x] = true
 
-        if (isLoop) {
-            console.log(`LOOP with wall at ${y}, ${x}`)
-            totalOfLoops += 1
-        }
-    })
-})
+    const [, isLoop] = computeGuardPath(testedWalls, guardPosition, guardDirection)
+
+    if (isLoop) {
+        console.log(`LOOP with wall at ${y}, ${x}`)
+        return acc + 1
+    }
+    return acc
+}, 0)
 
 console.log(`TOTAL: ${totalOfLoops}`)
