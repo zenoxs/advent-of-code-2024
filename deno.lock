@@ -5,7 +5,8 @@
     "jsr:@std/internal@^1.0.5": "1.0.5",
     "jsr:@std/path@*": "1.0.8",
     "jsr:@std/path@^1.0.8": "1.0.8",
-    "npm:@types/node@*": "22.5.4"
+    "npm:@types/node@*": "22.5.4",
+    "npm:vecti@^3.0.11": "3.0.11"
   },
   "jsr": {
     "@std/assert@1.0.8": {
@@ -30,6 +31,9 @@
     },
     "undici-types@6.19.8": {
       "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
+    },
+    "vecti@3.0.11": {
+      "integrity": "sha512-MP3B8nE44L0rdB8XcZQRxPa5Rb8OBeFHU2AK5TEDEdR3Rnj1R0JmSAPpauupTGY//XFYG7B4Jfxa93tTTQhwgA=="
     }
   },
   "remote": {
@@ -38,7 +42,8 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/assert@1",
-      "jsr:@std/path@^1.0.8"
+      "jsr:@std/path@^1.0.8",
+      "npm:vecti@^3.0.11"
     ]
   }
 }

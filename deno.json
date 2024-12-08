@@ -13,6 +13,7 @@
   },
   "imports": {
     "@std/assert": "jsr:@std/assert@1",
-    "@std/path": "jsr:@std/path@^1.0.8"
+    "@std/path": "jsr:@std/path@^1.0.8",
+    "vecti": "npm:vecti@^3.0.11"
   }
 }
