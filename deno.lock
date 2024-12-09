@@ -6,6 +6,7 @@
     "jsr:@std/path@*": "1.0.8",
     "jsr:@std/path@^1.0.8": "1.0.8",
     "npm:@types/node@*": "22.5.4",
+    "npm:chalk@^5.3.0": "5.3.0",
     "npm:vecti@^3.0.11": "3.0.11"
   },
   "jsr": {
@@ -29,6 +30,9 @@
         "undici-types"
       ]
     },
+    "chalk@5.3.0": {
+      "integrity": "sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w=="
+    },
     "undici-types@6.19.8": {
       "integrity": "sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw=="
     },
@@ -43,6 +47,7 @@
     "dependencies": [
       "jsr:@std/assert@1",
       "jsr:@std/path@^1.0.8",
+      "npm:chalk@^5.3.0",
       "npm:vecti@^3.0.11"
     ]
   }
