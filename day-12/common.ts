@@ -29,3 +29,26 @@ export function getOrInitializeCellGrid(map: CellGrid, y: number): Set<number> {
     }
     return map.get(y)!
 }
+
+function rotate90<T>(matrix: T[][]) {
+    const n = matrix.length
+    const rotated: T[][] = []
+    for (let i = 0; i < n; i++) {
+        rotated.push([])
+        for (let j = 0; j < n; j++) {
+            rotated[i][j] = matrix[n - j - 1][i]
+        }
+    }
+    return rotated
+}
+
+// Function to generate all rotations
+export function generateAllRotations<T>(matrix: T[][]) {
+    const rotations: T[][][] = []
+    let currentMatrix = matrix
+    for (let i = 0; i < 4; i++) {
+        rotations.push(currentMatrix)
+        currentMatrix = rotate90(currentMatrix)
+    }
+    return rotations
+}
